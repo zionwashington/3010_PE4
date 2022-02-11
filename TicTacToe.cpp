@@ -1,4 +1,5 @@
 #include <string>
+#include <utility>
 #include <iostream>
 
 using namespace std;
@@ -33,10 +34,9 @@ void PrintBoard(int** board) {
     board[1][0], board[1][1], board[1][2],
     board[2][0], board[2][1], board[2][2]);
 }
-
-
-
-
+void PlaceMarker(int** board, int x, int y, int marker) {
+    board[y][x] = marker;
+}
 
 int main(){
     int** board = CreateBoard();
