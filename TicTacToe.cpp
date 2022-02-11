@@ -8,8 +8,8 @@ void createBoard(){
     char Board[3][3] = {};
 }
 
-char GetPlayerChoice(){
-    char choice; 
+int GetPlayerChoice(){
+    int choice; 
     cin >> choice; 
     return choice; 
     
@@ -34,16 +34,23 @@ void PrintBoard(int** board) {
     board[1][0], board[1][1], board[1][2],
     board[2][0], board[2][1], board[2][2]);
 }
-void PlaceMarker(int** board, int x, int y, int marker) {
+void PlaceMarker(int** board, int pos, int marker) {
+    int x = (pos-1)%3;
+    int y = (pos-1)/3;
     board[y][x] = marker;
 }
 
 int main(){
     int** board = CreateBoard();
-    PrintBoard(board);
-
-    cout << "Choose a position to play." << endl;
-    GetPlayerChoice();
+    char player = 'x';
+    for(int n=0; n<9; n++) {
+        PrintBoard(board);
+        cout << "Choose a position to play (" << player << ")" << endl;
+        int choice = GetPlayerChoice();
+        PlaceMarker(board, choice, player);
+        player = player=='x' ? 'y' : 'x';
+    }
+    std::cout << "Game Over" << std::endl;
 
 
 
