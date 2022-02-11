@@ -7,13 +7,21 @@ void createBoard(){
     int Board[3][3] = {};
 }
 
+string GetPlayerChoice(){
+    string choice; 
+    cin >> choice; 
+    return choice; 
+    
+}
+
 int** CreateBoard() {
     int** arr;
+    int number = 1;
     arr = new int*[3];
     for(int n=0; n<3; n++) {
         arr[n] = new int[3];
         for(int i=0; i<3; i++) {
-            arr[n][i] = 0;
+            arr[n][i] = number++ ;
         }
     }
     return arr;
@@ -26,9 +34,18 @@ void PrintBoard(int** board) {
     board[2][0], board[2][1], board[2][2]);
 }
 
+
+
+
+
 int main(){
     int** board = CreateBoard();
     PrintBoard(board);
-    
+
+    cout << "Choose a position to play." << endl;
+    GetPlayerChoice();
+
+
+
     return 0; 
 }
